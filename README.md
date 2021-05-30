@@ -1,20 +1,20 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Introduction
+Favorite Cakes - Built with:
+https://get.asp.net/ ASP.NET Core and C# for cross-platform server-side code
+https://angular.io/ Angular and TypeScript for client-side code
+http://getbootstrap.com/ Bootstrap for layout and styling
+
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Angular CLI integration. In development mode, there's no need to run ng serve. It runs in the background automatically, so your client-side resources are dynamically built on demand and the page refreshes when you modify any file.
+Efficient production builds. In production mode, development-time features are disabled, and your dotnet publish configuration automatically invokes ng build to produce minified, ahead-of-time compiled JavaScript files.
+The ClientApp subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any ng command (e.g.,ng test), or use npm to install extra packages into it.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+- Install Node.js
+- Open the ClientApp subdirectory in a command prompt then run npm install.
+- You can then run the app in IIS Express via visual studio.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+If you want to you can run Angular CLI server independently of asp.net core process to get rid of 10sec startup whenever stopping to change c# code:
+From the ClientApp subdirectory run the command 'npm start'
+In your Startup.cs class, replace the spa.UseAngularCliServer invocation with the following:
+spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
