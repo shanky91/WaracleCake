@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  cakeApiBaseUrl: 'https://localhost:44377/'
 };
