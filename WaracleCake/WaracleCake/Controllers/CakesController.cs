@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WaracleCake.Data;
 using WaracleCake.Models;
+using WaracleCake.Models.RequestDto;
 
 namespace WaracleCake.Controllers
 {
@@ -75,11 +76,22 @@ namespace WaracleCake.Controllers
         }
 
         // POST: api/Cakes
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Cake>> PostCake(Cake cake)
+        public async Task<ActionResult<Cake>> PostCake(CakeDto cakeDto)
         {
+
+            if (_context.Cake.Any(x => x.Name.ToUpper() == cakeDto.Name.ToUpper()))
+            {
+                return Conflict(new { message = $"An existing record with the name '{cakeDto.Name}' already exists." });
+            }
+
+            var cake = new Cake
+            {
+                Name = cakeDto.Name,
+                Comment = cakeDto.Comment,
+                YumFactor = cakeDto.YumFactor,
+                ImageUrl = cakeDto.ImageUrl
+            };
             _context.Cake.Add(cake);
             await _context.SaveChangesAsync();
 
