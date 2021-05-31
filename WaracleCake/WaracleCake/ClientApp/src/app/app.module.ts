@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CakeComponent } from './cake/cake.component';
 import { CakeService } from './services/cake.service';
 import { CakeUpdateComponent } from './cake/cake-update.component';
+import { CakeDetailsComponent } from './cake/cake-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CakeUpdateComponent } from './cake/cake-update.component';
     NavMenuComponent,
     HomeComponent,
     CakeComponent,
-    CakeUpdateComponent
+    CakeUpdateComponent,
+    CakeDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { CakeUpdateComponent } from './cake/cake-update.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'cake', component: CakeComponent },
+      { path: 'cake/:id', component: CakeDetailsComponent },
       { path: 'add', component: CakeUpdateComponent },
     ])
   ],
