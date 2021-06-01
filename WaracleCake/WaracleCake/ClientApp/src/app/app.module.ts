@@ -11,6 +11,8 @@ import { CakeComponent } from './cake/cake.component';
 import { CakeService } from './services/cake.service';
 import { CakeUpdateComponent } from './cake/cake-update.component';
 import { CakeDetailsComponent } from './cake/cake-details.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CakeDetailsComponent } from './cake/cake-details.component';
       { path: 'cake', component: CakeComponent },
       { path: 'cake/:id', component: CakeDetailsComponent },
       { path: 'add', component: CakeUpdateComponent },
-    ])
+      { path: '**', component: HomeComponent },
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     CakeService
