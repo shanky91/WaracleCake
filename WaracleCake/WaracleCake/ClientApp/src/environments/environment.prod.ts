@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  cakeApiBaseUrl: 'https://localhost:44377/'
+  cakeApiBaseUrl: 'https://s736092456.websitehome.co.uk/'
 };
