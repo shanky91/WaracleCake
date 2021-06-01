@@ -32,6 +32,7 @@ import { environment } from '../environments/environment';
       { path: 'cake', component: CakeComponent },
       { path: 'cake/:id', component: CakeDetailsComponent },
       { path: 'add', component: CakeUpdateComponent },
+      { path: '**', component: HomeComponent },
     ]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
