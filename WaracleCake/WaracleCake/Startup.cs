@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using WaracleCake.Data;
+using WaracleCake.Services;
 
 namespace WaracleCake
 {
@@ -31,6 +32,7 @@ namespace WaracleCake
 
             services.AddDbContext<WaracleCakeContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WaracleCakeContext")));
+            services.AddScoped<ICakeService, CakeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
